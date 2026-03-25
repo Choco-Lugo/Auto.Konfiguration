@@ -53,6 +53,7 @@ namespace Auto.Konfiguration.APresentation.ViewModels
             extras = new ObservableCollection<OptionalEquipment>(_appDbContext.GetOptionalEquipment());
         }
 
+        //Berechnungen
         partial void OnSelectedEngineChanged(Engine? value)
         {
             Config.Engine = value;
