@@ -1,0 +1,26 @@
+﻿<Application x:Class="Auto.Konfiguration.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Auto.Konfiguration"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:Auto.Konfiguration.APresentation.ViewModels;assembly=Auto.Konfiguration.APresentation"
+             xmlns:views="clr-namespace:Auto.Konfiguration.Views">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <materialDesign:BundledTheme BaseTheme="Light"
+                                     PrimaryColor="Blue"
+                                     SecondaryColor="Amber"/>
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:CarKonfigurationModel}">
+                <views:CarKonfigurationView />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
