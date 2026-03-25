@@ -1,7 +1,9 @@
-name: .NET CI
+name: .NET Build & Test
 
 on:
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -21,7 +23,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --configuration Release --no-restore
 
-    - name: Tests
-      run: dotnet test --no-build
+    - name: Tests ausführen
+      run: dotnet test --no-build --verbosity normal
