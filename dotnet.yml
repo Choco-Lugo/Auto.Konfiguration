@@ -27,3 +27,12 @@ jobs:
 
     - name: Tests ausführen
       run: dotnet test --no-build --verbosity normal
+
+    - name: Publish WPF App
+      run: dotnet publish Auto.Konfiguration -c Release -r win-x64 --self-contained true -o publish
+
+    - name: Artefakt hochladen
+      uses: actions/upload-artifact@v4
+      with:
+        name: CarConfiguratorApp
+        path: publish
