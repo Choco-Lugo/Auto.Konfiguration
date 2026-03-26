@@ -127,10 +127,11 @@
                 </StackPanel>
 
                 <Button Content="Bestellen"
-                    Width="200"
-                    Height="50"
-                    DockPanel.Dock="Right"
-                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+                        Command="{Binding OrderCommand}"
+                        Width="200"
+                        Height="50"
+                        DockPanel.Dock="Right"
+                        Style="{StaticResource MaterialDesignRaisedButton}"/>
             </DockPanel>
         </materialDesign:Card>
 

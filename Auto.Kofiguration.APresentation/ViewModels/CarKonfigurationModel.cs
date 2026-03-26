@@ -93,5 +93,12 @@ namespace Auto.Konfiguration.APresentation.ViewModels
 
             TotalPreice = _calculatePrice.Price(Config);
         }
+
+        //Button Command
+        [RelayCommand]
+        private void Order()
+        {
+            System.Windows.MessageBox.Show($"Bestellt für  {TotalPreice} €");
+        }
     }
 }
