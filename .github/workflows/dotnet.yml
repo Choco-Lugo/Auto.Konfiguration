@@ -26,10 +26,10 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Tests ausführen
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --configuration Release --verbosity normal
 
     - name: Publish WPF App
-      run: dotnet publish Auto.Konfiguration -c Release -r win-x64 --self-contained true -o publish
+      run: dotnet publish Auto.Konfiguration.csproj -c Release -r win-x64 --self-contained true -o publish
 
     - name: Artefakt hochladen
       uses: actions/upload-artifact@v4
