@@ -94,11 +94,22 @@ namespace Auto.Konfiguration.APresentation.ViewModels
             TotalPreice = _calculatePrice.Price(Config);
         }
 
-        //Button Command
+        //Button Command, Übermittlung Konfiguration
         [RelayCommand]
-        private void Order()
+        private void SaveConfig() 
         {
-            System.Windows.MessageBox.Show($"Bestellt für  {TotalPreice} €");
+            Config.Url = Guid.NewGuid().ToString();
+            Config.TotalPrice = TotalPreice;
+
+            _appDbContext.SaveConfiguration(Config);
+
+            if (Config.Paint != null && Config.Engine != null)
+            {
+                _navigationService.NavigateTo<CarCompleteModel>(vm =>
+                {
+                    vm.Config = Config;
+                });
+            }
         }
     }
 }

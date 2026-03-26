@@ -29,5 +29,8 @@ namespace Auto.Konfiguration.APresentation.ViewModels
 
         [RelayCommand]
         private void NavigateKonfi() => _navigationService.NavigateTo<CarKonfigurationModel>();
+
+        [RelayCommand]
+        private void NavigateComplete() => _navigationService.NavigateTo<CarCompleteModel>();
     }
 }

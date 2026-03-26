@@ -131,14 +131,14 @@
                     <TextBlock Text="Gesamtpreis"
                                Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
-                    <TextBlock Text="{Binding TotalPreice}"
+                    <TextBlock Text="{Binding TotalPreice, StringFormat={}{0:C}, ConverterCulture=de-DE}"
                                FontSize="28"
                                FontWeight="Bold"/>
 
                 </StackPanel>
 
-                <Button Content="Bestellen"
-                            Command="{Binding OrderCommand}"
+                <Button Content="Kofiguration speichern"
+                            Command="{Binding SaveConfigCommand}"
                             Width="200"
                             Height="50"
                             DockPanel.Dock="Right"

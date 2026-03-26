@@ -89,5 +89,21 @@ namespace Auto.Konfiguration.Infrastructure.Daten
         {
             return OptionalEquipments.ToList();
         }
+
+        public void SaveConfiguration(CarConfiguration config)
+        {
+            Configurations.Add(config);
+            SaveChanges();
+        }
+
+        public CarConfiguration? GetConfigurationByUrl(string inputUrl)
+        {
+            return Configurations
+                .Include(x => x.Engine)
+                .Include(x => x.Paint)
+                .Include(x => x.Rims)
+                .Include(x => x.OptionalEquipment)
+                .FirstOrDefault(x => x.Url == inputUrl);
+        }
     }
 }

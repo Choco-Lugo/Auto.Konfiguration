@@ -35,9 +35,7 @@ namespace Auto.Konfiguration
             // ViewModels
             services.AddSingleton<MainWindowModel>();
             services.AddTransient<CarKonfigurationModel>();
-            //services.AddTransient<KonfigurationViewModel>();
-            //services.AddTransient<BearbeitenViewModel>();
-            //services.AddTransient<FreigabeViewModel>();
+            services.AddTransient<CarCompleteModel>();
 
             // Application Services + Interfaces
             services.AddTransient<IAppDbContextService, AppDbContext>();

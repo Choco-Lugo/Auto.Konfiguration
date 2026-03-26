@@ -21,6 +21,10 @@
                 <views:CarKonfigurationView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:CarCompleteModel}">
+                <views:CarCompleteView />
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

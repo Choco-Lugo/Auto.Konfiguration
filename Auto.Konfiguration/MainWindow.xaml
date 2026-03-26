@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Auto.Konfiguration"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="860" MinWidth="1420">
+        Title="Bewerbung" MinHeight="860" MinWidth="1420">
     <DockPanel>
 
         <Grid DockPanel.Dock="Top" Background="#1E1E2F">
@@ -65,9 +65,9 @@
                         Command="{Binding NavigateKonfiCommand}"
                         Style="{StaticResource MaterialDesignFlatButton}"/>
 
-                <Button Content="Übersicht"
+                <Button Content="Abschluß"
                         Margin="10"
-                        Command="{Binding NavigateUebersichtCommand}"
+                        Command="{Binding NavigateCompleteCommand}"
                         Style="{StaticResource MaterialDesignFlatButton}"/>
 
                 <StackPanel VerticalAlignment="Bottom" Margin="10,50,0,20">

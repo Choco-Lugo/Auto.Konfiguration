@@ -9,5 +9,7 @@ namespace Auto.Konfiguration.Domain.Interfaces
         List<Paint> GetPaints();
         List<Rims> GetRims();
         List<OptionalEquipment> GetOptionalEquipment();
+        void SaveConfiguration(CarConfiguration config);
+        CarConfiguration GetConfigurationByUrl(string inputUrl);
     }
 }
