@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Auto.Konfiguration.Views"
              mc:Ignorable="d" 
-             MinHeight="750" MinWidth="1200">
+             MinHeight="400" MinWidth="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -21,46 +21,46 @@
             </Grid.ColumnDefinitions>
 
             <!--Motor-->
-            <materialDesign:Card Margin="10" Padding="15">
+            <materialDesign:Card Margin="10" Padding="15"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock Text="Motorleistung"
-                           Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                                   Background="#FF2196F3"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
 
                     <TextBlock Text="{Binding SelectedEngine.Power, StringFormat='{}Gewählt: {0} PS'}"
-                           Margin="0,5,0,10"
-                           FontWeight="Bold"/>
+                               Margin="0,5,0,10"
+                               FontWeight="Bold"/>
 
                     <ListBox Grid.Row="1"
-                             ItemsSource="{Binding engines}"
-                             SelectedItem="{Binding SelectedEngine}"
-                             DisplayMemberPath="Power"
-                             Style="{StaticResource MaterialDesignListBox}">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem"
-                                    BasedOn="{StaticResource MaterialDesignListBoxItem}">
-                                <Setter Property="Padding" Value="10"/>
-                                <Setter Property="Margin" Value="4"/>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
+                                 ItemsSource="{Binding engines}"
+                                 SelectedItem="{Binding SelectedEngine}"
+                                 DisplayMemberPath="Power"
+                                 Style="{StaticResource MaterialDesignListBox}">
+                        
                     </ListBox>
                 </StackPanel>
             </materialDesign:Card>
 
             <!--Lackierung-->
-            <materialDesign:Card Grid.Column="1" Margin="10" Padding="15">
+            <materialDesign:Card Grid.Column="1" Margin="10" Padding="15"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock Text="Lackierung"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                                   Background="#FF2196F3"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
 
                     <TextBlock Text="{Binding SelectedPaint.Name, StringFormat='{}Gewählt: {0}'}"
-                           Margin="0,5,0,10"
-                           FontWeight="Bold"/>
+                               Margin="0,5,0,10"
+                               FontWeight="Bold"/>
 
                     <ListBox Grid.Row="1"
-                         ItemsSource="{Binding paints}"
-                         SelectedItem="{Binding SelectedPaint}"
-                         DisplayMemberPath="Name"
-                         Style="{StaticResource MaterialDesignListBox}"/>
+                             ItemsSource="{Binding paints}"
+                             SelectedItem="{Binding SelectedPaint}"
+                             DisplayMemberPath="Name"
+                             Style="{StaticResource MaterialDesignListBox}"/>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>
@@ -72,28 +72,34 @@
             </Grid.ColumnDefinitions>
 
             <!--Felgen-->
-            <materialDesign:Card Grid.Column="0" Margin="10" Padding="15">
+            <materialDesign:Card Grid.Column="0" Margin="10" Padding="15"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock Text="Felgen"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                                   Background="#FF2196F3"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
 
                     <TextBlock Text="{Binding SelectedRims.Name, StringFormat='{}Gewählt: {0}'}"
-                           Margin="0,5,0,10"
-                           FontWeight="Bold"/>
+                               Margin="0,5,0,10"
+                               FontWeight="Bold"/>
 
                     <ListBox Grid.Row="1"
-                         ItemsSource="{Binding rims}"
-                         SelectedItem="{Binding SelectedRims}"
-                         DisplayMemberPath="Name"
-                         Style="{StaticResource MaterialDesignListBox}"/>
+                             ItemsSource="{Binding rims}"
+                             SelectedItem="{Binding SelectedRims}"
+                             DisplayMemberPath="Name"
+                             Style="{StaticResource MaterialDesignListBox}"/>
                 </StackPanel>
             </materialDesign:Card>
 
             <!--Extras-->
-            <materialDesign:Card Grid.Column="1" Margin="10" Padding="15">
+            <materialDesign:Card Grid.Column="1" Margin="10" Padding="15"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock Text="Sonderausstattung"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                                   Background="#FF2196F3"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
 
                     <ItemsControl ItemsSource="{Binding SelectedOptionalEquipment}">
                         <ItemsControl.ItemTemplate>
@@ -103,35 +109,40 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <ListBox Grid.Row="1"
-                         ItemsSource="{Binding extras}"
-                         SelectionMode="Multiple"
-                         DisplayMemberPath="Name"
-                         SelectionChanged="Extras_SelectionChanged"
-                         Margin="0,0,0,0"
-                         Style="{StaticResource MaterialDesignListBox}"/>
+                    <ScrollViewer 
+                      VerticalScrollBarVisibility="Auto">
+                        <ListBox Grid.Row="1"
+                             ItemsSource="{Binding extras}"
+                             SelectionMode="Multiple"
+                             DisplayMemberPath="Name"
+                             SelectionChanged="Extras_SelectionChanged"
+                             Margin="0,0,0,0"
+                             Style="{StaticResource MaterialDesignListBox}"/>
+                    </ScrollViewer>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>
 
-        <materialDesign:Card Grid.Row="2" Margin="10" Padding="20">
+        <materialDesign:Card Grid.Row="2" Margin="10" Padding="20"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch">
             <DockPanel>
                 <StackPanel DockPanel.Dock="Left">
                     <TextBlock Text="Gesamtpreis"
-                           Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+                               Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
                     <TextBlock Text="{Binding TotalPreice}"
-                           FontSize="28"
-                           FontWeight="Bold"/>
+                               FontSize="28"
+                               FontWeight="Bold"/>
 
                 </StackPanel>
 
                 <Button Content="Bestellen"
-                        Command="{Binding OrderCommand}"
-                        Width="200"
-                        Height="50"
-                        DockPanel.Dock="Right"
-                        Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            Command="{Binding OrderCommand}"
+                            Width="200"
+                            Height="50"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource MaterialDesignRaisedButton}"/>
             </DockPanel>
         </materialDesign:Card>
 
