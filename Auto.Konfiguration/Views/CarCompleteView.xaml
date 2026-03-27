@@ -17,7 +17,7 @@
             <Setter Property="Padding" Value="20"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
 
-            <!-- Hover Animation vorbereiten -->
+            <!--Hover-->
             <Setter Property="RenderTransform">
                 <Setter.Value>
                     <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -26,7 +26,6 @@
 
             <Style.Triggers>
 
-                <!-- Hover rein -->
                 <EventTrigger RoutedEvent="MouseEnter">
                     <BeginStoryboard>
                         <Storyboard>
@@ -38,7 +37,6 @@
                     </BeginStoryboard>
                 </EventTrigger>
 
-                <!-- Hover raus -->
                 <EventTrigger RoutedEvent="MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
@@ -78,7 +76,7 @@
                             Style="{StaticResource MaterialDesignRaisedButton}"/>
                 </StackPanel>
 
-                <!--URL Anzeige-->
+                <!--URL-->
                 <TextBlock Text="{Binding GeneratedUrl}"
                        Margin="0,10,0,0"
                        Foreground="{DynamicResource PrimaryHueMidBrush}"
@@ -99,10 +97,10 @@
             </Grid.ColumnDefinitions>
 
             <!--MOTOR-->
-            <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
+            <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
 
-                    <!-- HEADER -->
+                    <!--HEADER-->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <materialDesign:PackIcon Kind="Engine"
                                      Width="24"
@@ -111,13 +109,14 @@
                                      Foreground="{DynamicResource PrimaryHueMidBrush}"/>
 
                         <TextBlock Text="Motor"
+                                   Foreground="#444"
                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
                     </StackPanel>
 
-                    <!-- LINIE -->
+                    <!--LINIE-->
                     <Separator Margin="0,10"/>
 
-                    <!-- CONTENT -->
+                    <!--CONTENT-->
                     <StackPanel>
                         <TextBlock Text="Leistung"
                                    Style="{StaticResource MaterialDesignCaptionTextBlock}"
@@ -134,10 +133,9 @@
             </materialDesign:Card>
 
             <!--LACK-->
-            <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
+            <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
 
-                    <!-- HEADER -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <materialDesign:PackIcon Kind="Paint"
                                  Width="24"
@@ -146,6 +144,7 @@
                                  Foreground="{DynamicResource PrimaryHueMidBrush}"/>
 
                         <TextBlock Text="Lackierung"
+                                   Foreground="#444"
                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
                     </StackPanel>
 
@@ -167,7 +166,7 @@
             </materialDesign:Card>
 
             <!--FELGEN-->
-            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
+            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
 
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -178,6 +177,7 @@
                                      Foreground="{DynamicResource PrimaryHueMidBrush}"/>
 
                         <TextBlock Text="Felgen"
+                                   Foreground="#444"
                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
                     </StackPanel>
 
@@ -199,7 +199,7 @@
             </materialDesign:Card>
 
             <!--EXTRAS-->
-            <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <materialDesign:PackIcon Kind="CarSettings"
@@ -209,6 +209,7 @@
                                      Foreground="{DynamicResource PrimaryHueMidBrush}"/>
 
                         <TextBlock Text="Sonderausstattung"
+                                   Foreground="#444"
                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
                     </StackPanel>
 
@@ -251,7 +252,7 @@
                                FontWeight="Bold"/>
                 </StackPanel>
 
-                <StackPanel DockPanel.Dock="Right" Margin="0,0,20,0">
+                <StackPanel DockPanel.Dock="Right" Margin="0,0,100,0">
                     <Button Content="Zurück"
                             Command="{Binding BackConfigurationCommand}"
                             DockPanel.Dock="Right"

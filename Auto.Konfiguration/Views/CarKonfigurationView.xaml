@@ -7,7 +7,52 @@
              xmlns:local="clr-namespace:Auto.Konfiguration.Views"
              mc:Ignorable="d" 
              MinHeight="400" MinWidth="600">
-    <Grid>
+    <UserControl.Resources>
+
+        <Style x:Key="ModernCardStyle"
+       TargetType="materialDesign:Card"
+       BasedOn="{StaticResource MaterialDesignElevatedCard}">
+
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+
+            <!--Hover-->
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                     To="1.03" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                     To="1.03" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                     To="1" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                     To="1" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid Background="#F3F6F9" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -21,47 +66,74 @@
             </Grid.ColumnDefinitions>
 
             <!--Motor-->
-            <materialDesign:Card Margin="10" Padding="15"
-                                     HorizontalAlignment="Stretch"
-                                     VerticalAlignment="Stretch">
+            <materialDesign:Card Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="Motorleistung"
-                                   Background="#FF2196F3"
-                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
+
+                    <!--HEADER-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Engine"
+                                         Width="24"
+                                         Height="24"
+                                         Margin="0,0,8,0"
+                                         Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+                        <TextBlock Text="Motor"
+                                   Foreground="#444"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <!--LINIE-->
+                    <Separator Margin="0,10"/>
 
                     <TextBlock Text="{Binding SelectedEngine.Power, StringFormat='{}Gewählt: {0} PS'}"
-                               Margin="0,5,0,10"
-                               FontWeight="Bold"/>
+                               Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource PrimaryHueMidBrush}"/>
 
                     <ListBox Grid.Row="1"
                                  ItemsSource="{Binding engines}"
                                  SelectedItem="{Binding SelectedEngine}"
                                  DisplayMemberPath="Power"
+                                 MaxHeight="155"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
                                  Style="{StaticResource MaterialDesignListBox}">
-                        
+
                     </ListBox>
                 </StackPanel>
+
             </materialDesign:Card>
 
             <!--Lackierung-->
-            <materialDesign:Card Grid.Column="1" Margin="10" Padding="15"
-                                     HorizontalAlignment="Stretch"
-                                     VerticalAlignment="Stretch">
+            <materialDesign:Card Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="Lackierung"
-                                   Background="#FF2196F3"
-                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Paint"
+                                        Width="24"
+                                        Height="24"
+                                        Margin="0,0,8,0"
+                                        Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+                        <TextBlock Text="Lackierung"
+                                    Foreground="#444"
+                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
 
                     <TextBlock Text="{Binding SelectedPaint.Name, StringFormat='{}Gewählt: {0}'}"
-                               Margin="0,5,0,10"
-                               FontWeight="Bold"/>
+                               Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource PrimaryHueMidBrush}"/>
 
                     <ListBox Grid.Row="1"
                              ItemsSource="{Binding paints}"
                              SelectedItem="{Binding SelectedPaint}"
                              DisplayMemberPath="Name"
+                             MaxHeight="155"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
                              Style="{StaticResource MaterialDesignListBox}"/>
                 </StackPanel>
+
             </materialDesign:Card>
         </Grid>
 
@@ -72,34 +144,52 @@
             </Grid.ColumnDefinitions>
 
             <!--Felgen-->
-            <materialDesign:Card Grid.Column="0" Margin="10" Padding="15"
-                                     HorizontalAlignment="Stretch"
-                                     VerticalAlignment="Stretch">
+            <materialDesign:Card Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="Felgen"
-                                   Background="#FF2196F3"
-                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Wheel"
+                                         Width="24"
+                                         Height="24"
+                                         Margin="0,0,8,0"
+                                         Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                        <TextBlock Text="Felgen"
+                                   Foreground="#444"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
 
                     <TextBlock Text="{Binding SelectedRims.Name, StringFormat='{}Gewählt: {0}'}"
-                               Margin="0,5,0,10"
-                               FontWeight="Bold"/>
+                               Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource PrimaryHueMidBrush}"/>
 
                     <ListBox Grid.Row="1"
                              ItemsSource="{Binding rims}"
                              SelectedItem="{Binding SelectedRims}"
                              DisplayMemberPath="Name"
+                             MaxHeight="155"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
                              Style="{StaticResource MaterialDesignListBox}"/>
                 </StackPanel>
             </materialDesign:Card>
 
             <!--Extras-->
-            <materialDesign:Card Grid.Column="1" Margin="10" Padding="15"
-                                     HorizontalAlignment="Stretch"
-                                     VerticalAlignment="Stretch">
+            <materialDesign:Card Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="Sonderausstattung"
-                                   Background="#FF2196F3"
-                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="CarSettings"
+                                         Width="24"
+                                         Height="24"
+                                         Margin="0,0,8,0"
+                                         Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+                        <TextBlock Text="Sonderausstattung"
+                                   Foreground="#444"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
 
                     <ItemsControl ItemsSource="{Binding SelectedOptionalEquipment}">
                         <ItemsControl.ItemTemplate>
@@ -117,6 +207,8 @@
                              DisplayMemberPath="Name"
                              SelectionChanged="Extras_SelectionChanged"
                              Margin="0,0,0,0"
+                             MaxHeight="155"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
                              Style="{StaticResource MaterialDesignListBox}"/>
                     </ScrollViewer>
                 </StackPanel>
@@ -137,12 +229,12 @@
 
                 </StackPanel>
 
-                <Button Content="Kofiguration speichern"
-                            Command="{Binding SaveConfigCommand}"
-                            Width="200"
-                            Height="50"
-                            DockPanel.Dock="Right"
-                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+                <StackPanel DockPanel.Dock="Right" Margin="50,20,100,0">
+                    <Button Content="Kofiguration speichern"
+                             Command="{Binding SaveConfigCommand}"
+                             DockPanel.Dock="Right"
+                             Style="{StaticResource MaterialDesignFlatButton}"/>
+                </StackPanel>
             </DockPanel>
         </materialDesign:Card>
 
