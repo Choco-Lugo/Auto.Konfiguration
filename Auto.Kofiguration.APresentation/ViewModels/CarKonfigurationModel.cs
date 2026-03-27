@@ -98,7 +98,7 @@ namespace Auto.Konfiguration.APresentation.ViewModels
         [RelayCommand]
         private void SaveConfig() 
         {
-            Config.Url = Guid.NewGuid().ToString();
+            Config.Code = Guid.NewGuid().ToString();
             Config.TotalPrice = TotalPreice;
 
             _appDbContext.SaveConfiguration(Config);

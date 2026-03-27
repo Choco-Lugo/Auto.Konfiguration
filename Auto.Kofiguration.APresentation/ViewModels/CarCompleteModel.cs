@@ -35,8 +35,8 @@ namespace Auto.Konfiguration.APresentation.ViewModels
         partial void OnConfigChanged(CarConfiguration value)
         {
             Config = value;
-            InputUrl = value.Url;
-            generatedUrl = $"https://myapp/config/{value.Url}";
+            InputUrl = value.Code;
+            generatedUrl = $"https://myapp/config/{value.Code}";
         }
 
         [RelayCommand]

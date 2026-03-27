@@ -23,6 +23,10 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("EngineId")
                         .HasColumnType("INTEGER");
 
@@ -32,8 +36,7 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
                     b.Property<int>("RimsId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Url")
-                        .IsRequired()
+                    b.Property<decimal>("TotalPrice")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

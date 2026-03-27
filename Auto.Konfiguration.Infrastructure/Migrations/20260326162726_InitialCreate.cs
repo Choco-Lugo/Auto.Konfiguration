@@ -11,35 +11,7 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Felgen",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Felgen", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Lacke",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Lacke", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Motoren",
+                name: "Engines",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -49,7 +21,35 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Motoren", x => x.Id);
+                    table.PrimaryKey("PK_Engines", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Paints",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Paints", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rimses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rimses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,33 +60,35 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     EngineId = table.Column<int>(type: "INTEGER", nullable: false),
                     PaintId = table.Column<int>(type: "INTEGER", nullable: false),
-                    RimsId = table.Column<int>(type: "INTEGER", nullable: false)
+                    RimsId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Code = table.Column<string>(type: "TEXT", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Configurations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Configurations_Felgen_RimsId",
-                        column: x => x.RimsId,
-                        principalTable: "Felgen",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Configurations_Lacke_PaintId",
-                        column: x => x.PaintId,
-                        principalTable: "Lacke",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Configurations_Motoren_EngineId",
+                        name: "FK_Configurations_Engines_EngineId",
                         column: x => x.EngineId,
-                        principalTable: "Motoren",
+                        principalTable: "Engines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Configurations_Paints_PaintId",
+                        column: x => x.PaintId,
+                        principalTable: "Paints",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Configurations_Rimses_RimsId",
+                        column: x => x.RimsId,
+                        principalTable: "Rimses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Extras",
+                name: "OptionalEquipments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -97,9 +99,9 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Extras", x => x.Id);
+                    table.PrimaryKey("PK_OptionalEquipments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Extras_Configurations_CarConfigurationId",
+                        name: "FK_OptionalEquipments_Configurations_CarConfigurationId",
                         column: x => x.CarConfigurationId,
                         principalTable: "Configurations",
                         principalColumn: "Id");
@@ -121,8 +123,8 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
                 column: "RimsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Extras_CarConfigurationId",
-                table: "Extras",
+                name: "IX_OptionalEquipments_CarConfigurationId",
+                table: "OptionalEquipments",
                 column: "CarConfigurationId");
         }
 
@@ -130,19 +132,19 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Extras");
+                name: "OptionalEquipments");
 
             migrationBuilder.DropTable(
                 name: "Configurations");
 
             migrationBuilder.DropTable(
-                name: "Felgen");
+                name: "Engines");
 
             migrationBuilder.DropTable(
-                name: "Lacke");
+                name: "Paints");
 
             migrationBuilder.DropTable(
-                name: "Motoren");
+                name: "Rimses");
         }
     }
 }

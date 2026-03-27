@@ -7,7 +7,54 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              MinHeight="700" MinWidth="1000">
-    <Grid Margin="20">
+    <UserControl.Resources>
+
+        <Style x:Key="ModernCardStyle"
+           TargetType="materialDesign:Card"
+           BasedOn="{StaticResource MaterialDesignElevatedCard}">
+
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+
+            <!-- Hover Animation vorbereiten -->
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+
+                <!-- Hover rein -->
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                         To="1.03" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                         To="1.03" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <!-- Hover raus -->
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                         To="1" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                         To="1" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid Background="#F3F6F9" Margin="20">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -52,52 +99,137 @@
             </Grid.ColumnDefinitions>
 
             <!--MOTOR-->
-            <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="10" Padding="15">
+            <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
                 <StackPanel>
-                    <TextBlock Text="Motor"
-                               Background="#FF2196F3"
-                               Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
 
-                    <TextBlock Text="{Binding Config.Engine.Power, StringFormat='{} {0} PS'}"
-                       FontWeight="Bold"/>
+                    <!-- HEADER -->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Engine"
+                                     Width="24"
+                                     Height="24"
+                                     Margin="0,0,8,0"
+                                     Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+                        <TextBlock Text="Motor"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <!-- LINIE -->
+                    <Separator Margin="0,10"/>
+
+                    <!-- CONTENT -->
+                    <StackPanel>
+                        <TextBlock Text="Leistung"
+                                   Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                   Opacity="0.7"/>
+
+                        <TextBlock Text="{Binding Config.Engine.Power, StringFormat='{}{0} PS'}"
+                                   Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    </StackPanel>
+
                 </StackPanel>
+
             </materialDesign:Card>
 
             <!--LACK-->
-            <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="10" Padding="15">
+            <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
                 <StackPanel>
-                    <TextBlock Text="Lackierung"
-                               Background="#FF2196F3"
-                               Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
 
-                    <TextBlock Text="{Binding Config.Paint.Name}"
-                       FontWeight="Bold"/>
+                    <!-- HEADER -->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Paint"
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0,0,8,0"
+                                 Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+                        <TextBlock Text="Lackierung"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
+
+                    <StackPanel>
+                        <TextBlock Text="Lack"
+                                   Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                   Opacity="0.7"/>
+
+                        <TextBlock Text="{Binding Config.Paint.Name}"
+                                   Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    </StackPanel>
+
                 </StackPanel>
+
             </materialDesign:Card>
 
             <!--FELGEN-->
-            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="10" Padding="15">
+            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
                 <StackPanel>
-                    <TextBlock Text="Felgen"
-                               Background="#FF2196F3"
-                               Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
 
-                    <TextBlock Text="{Binding Config.Rims.Name}"
-                       FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Wheel"
+                                     Width="24"
+                                     Height="24"
+                                     Margin="0,0,8,0"
+                                     Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+                        <TextBlock Text="Felgen"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
+
+                    <StackPanel>
+                        <TextBlock Text="Felge"
+                                   Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                   Opacity="0.7"/>
+
+                        <TextBlock Text="{Binding Config.Rims.Name}"
+                                   Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    </StackPanel>
+
                 </StackPanel>
+
             </materialDesign:Card>
 
             <!--EXTRAS-->
-            <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="10" Padding="15">
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="10" Padding="20" Style="{StaticResource ModernCardStyle}">
                 <StackPanel>
-                    <TextBlock Text="Sonderausstattung"
-                               Background="#FF2196F3"
-                               Style="{StaticResource MaterialDesignHeadline6TextBlock}" Height="28"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="CarSettings"
+                                     Width="24"
+                                     Height="24"
+                                     Margin="0,0,8,0"
+                                     Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+                        <TextBlock Text="Sonderausstattung"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
 
                     <ItemsControl ItemsSource="{Binding Config.OptionalEquipment}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Name, StringFormat=• {0}}"/>
+                                <Border Background="#E3F2FD"
+                                        CornerRadius="12"
+                                        Padding="8,4"
+                                        Margin="4">
+                                    <TextBlock Text="{Binding Name}"
+                                                Foreground="#1976D2"/>
+                                </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -119,10 +251,16 @@
                                FontWeight="Bold"/>
                 </StackPanel>
 
-                <Button Content="Zurück"
-                        Command="{Binding BackConfigurationCommand}"
-                        DockPanel.Dock="Right"
-                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                <StackPanel DockPanel.Dock="Right" Margin="0,0,20,0">
+                    <Button Content="Zurück"
+                            Command="{Binding BackConfigurationCommand}"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <Button Content="Abschließen"
+                            Command="{Binding BackConfigurationCommand}"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource MaterialDesignFlatButton}"/>
+                </StackPanel>
             </DockPanel>
         </materialDesign:Card>
 

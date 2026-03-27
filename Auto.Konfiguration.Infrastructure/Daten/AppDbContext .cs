@@ -103,7 +103,7 @@ namespace Auto.Konfiguration.Infrastructure.Daten
                 .Include(x => x.Paint)
                 .Include(x => x.Rims)
                 .Include(x => x.OptionalEquipment)
-                .FirstOrDefault(x => x.Url == inputUrl);
+                .FirstOrDefault(x => x.Code == inputUrl);
         }
     }
 }

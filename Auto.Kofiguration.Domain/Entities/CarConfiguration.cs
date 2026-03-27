@@ -10,7 +10,7 @@
         public int RimsId { get; set; }
         public Rims? Rims { get; set; }
         public List<OptionalEquipment> OptionalEquipment { get; set; } = new();
-        public string Url { get; set; } = Guid.NewGuid().ToString();
+        public string Code { get; set; } = Guid.NewGuid().ToString();
         public decimal TotalPrice { get; set; }
     }
 }

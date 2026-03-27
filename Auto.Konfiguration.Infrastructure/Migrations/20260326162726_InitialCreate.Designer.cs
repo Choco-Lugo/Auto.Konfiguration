@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Auto.Konfiguration.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260324083900_InitialCreate")]
+    [Migration("20260326162726_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -26,6 +26,10 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("EngineId")
                         .HasColumnType("INTEGER");
 
@@ -34,6 +38,9 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
 
                     b.Property<int>("RimsId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -60,7 +67,7 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Motoren");
+                    b.ToTable("Engines");
                 });
 
             modelBuilder.Entity("Auto.Konfiguration.Domain.Entities.OptionalEquipment", b =>
@@ -83,7 +90,7 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
 
                     b.HasIndex("CarConfigurationId");
 
-                    b.ToTable("Extras");
+                    b.ToTable("OptionalEquipments");
                 });
 
             modelBuilder.Entity("Auto.Konfiguration.Domain.Entities.Paint", b =>
@@ -101,7 +108,7 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Lacke");
+                    b.ToTable("Paints");
                 });
 
             modelBuilder.Entity("Auto.Konfiguration.Domain.Entities.Rims", b =>
@@ -119,7 +126,7 @@ namespace Auto.Konfiguration.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Felgen");
+                    b.ToTable("Rimses");
                 });
 
             modelBuilder.Entity("Auto.Konfiguration.Domain.Entities.CarConfiguration", b =>
