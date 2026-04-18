@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Auto.Kofiguration.Domain\Auto.Konfiguration.Domain.csproj" />
   </ItemGroup>
 

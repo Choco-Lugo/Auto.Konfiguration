@@ -1,0 +1,23 @@
+﻿@page "/complete"
+@using Auto.Konfiguration.Blazor.Services
+@using Microsoft.AspNetCore.Components.Web
+@using MudBlazor
+@rendermode @(new InteractiveServerRenderMode())
+
+@inject ConfigStateService State
+
+<MudContainer>
+
+<MudCard Class="pa-4">
+    <MudText Typo="Typo.h5">Zusammenfassung</MudText>
+
+    <MudText>Motor ID: @State.EngineId</MudText>
+    <MudText>Lack ID: @State.PaintId</MudText>
+
+    <MudDivider />
+
+    <MudText Typo="Typo.h4">@State.TotalPrice €</MudText>
+</MudCard>
+
+</MudContainer>
+

@@ -225,12 +225,12 @@
 
                     <TextBlock Text="{Binding TotalPreice, StringFormat={}{0:C}, ConverterCulture=de-DE}"
                                FontSize="28"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold" Width="150"/>
 
                 </StackPanel>
 
-                <StackPanel DockPanel.Dock="Right" Margin="50,20,100,0">
-                    <Button Content="Kofiguration speichern"
+                <StackPanel DockPanel.Dock="Right" Margin="10,20,160,0">
+                    <Button Content="Konfiguration speichern"
                              Command="{Binding SaveConfigCommand}"
                              DockPanel.Dock="Right"
                              Style="{StaticResource MaterialDesignFlatButton}"/>

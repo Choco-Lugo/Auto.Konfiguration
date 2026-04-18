@@ -1,0 +1,102 @@
+﻿@page "/konfiguration"
+@using Auto.Konfiguration.BApplication.Interface
+@using Auto.Konfiguration.Blazor.Services
+@using Auto.Konfiguration.Domain.Entities
+@using Auto.Konfiguration.Domain.Interfaces
+@using MudBlazor
+@inject IAppDbContextService Db
+@inject ICalculatePrice PriceService
+@inject ConfigStateService State
+
+<MudGrid>
+
+<MudItem xs="12" md="6">
+<MudCard Class="pa-4 hover-card">
+
+<MudText Typo="Typo.h6">Motor</MudText>
+
+<MudSelect T="int"
+            Label="Motor wählen"
+            @bind-Value="SelectedEngineId">
+
+    @foreach (var item in Engines)
+    {
+        <MudSelectItem T="int" Value="@item.Id">
+            @item.Power PS
+        </MudSelectItem>
+    }
+
+</MudSelect>
+
+</MudCard>
+</MudItem>
+
+<MudItem xs="12" md="6">
+<MudCard Class="pa-4 hover-card">
+
+<MudText Typo="Typo.h6">Lackierung</MudText>
+
+<MudSelect T="int"
+            Label="Lack wählen"
+            @bind-Value="SelectedPaintId">
+
+    @foreach (var item in Paints)
+    {
+        <MudSelectItem T="int" Value="@item.Id">
+             @item.Name
+        </MudSelectItem>
+    }
+
+</MudSelect>
+
+</MudCard>
+</MudItem>
+
+<MudItem xs="12">
+<MudCard Class="pa-4 mt-4">
+<MudText Typo="Typo.h5">
+Gesamtpreis: @State.TotalPrice €
+</MudText>
+</MudCard>
+</MudItem>
+
+</MudGrid>
+
+@code{
+
+List<Engine> Engines = new();
+List<Paint> Paints = new();
+
+int SelectedEngineId;
+int SelectedPaintId;
+
+protected override void OnInitialized()
+{
+    Engines = Db.GetEngines();
+    Paints = Db.GetPaints();
+}
+
+void EngineChanged(int id)
+{
+    State.EngineId = id;
+    Update();
+}
+
+void PaintChanged(int id)
+{
+    State.PaintId = id;
+    Update();
+}
+
+void Update()
+{
+    var config = new CarConfiguration
+    {
+        Engine = Engines.FirstOrDefault(x => x.Id == State.EngineId),
+        Paint = Paints.FirstOrDefault(x => x.Id == State.PaintId)
+    };
+
+    State.TotalPrice = PriceService.Price(config);
+}
+
+}

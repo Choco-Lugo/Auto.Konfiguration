@@ -7,6 +7,11 @@ namespace Auto.Konfiguration.Infrastructure.Daten
 {
     public class AppDbContext : DbContext, IAppDbContextService
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<Engine> Engines => Set<Engine>();
         public DbSet<Paint> Paints => Set<Paint>();
         public DbSet<Rims> Rimses => Set<Rims>(); 
@@ -14,8 +19,8 @@ namespace Auto.Konfiguration.Infrastructure.Daten
 
         public DbSet<CarConfiguration> Configurations => Set<CarConfiguration>();
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=carconfig.db");
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //    => options.UseSqlite("Data Source=carconfig.db");
 
         public void InsertDB()
         {

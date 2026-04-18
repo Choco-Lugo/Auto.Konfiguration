@@ -1,0 +1,28 @@
+﻿@page "/"
+@using MudBlazor
+
+<MudText Typo="Typo.h4" GutterBottom="true">
+    Willkommen im Auto-Konfigurator
+</MudText>
+
+<MudGrid>
+
+    <MudItem xs="12" md="6">
+        <MudCard Class="pa-4 hover-card">
+            <MudText Typo="Typo.h6">Konfiguration starten</MudText>
+            <MudButton Href="/konfiguration" Color="Color.Primary">
+                Öffnen
+            </MudButton>
+        </MudCard>
+    </MudItem>
+
+    <MudItem xs="12" md="6">
+        <MudCard Class="pa-4 hover-card">
+            <MudText Typo="Typo.h6">Abschlussseite</MudText>
+            <MudButton Href="/abschluss" Color="Color.Primary">
+                Öffnen
+            </MudButton>
+        </MudCard>
+    </MudItem>
+
+</MudGrid>

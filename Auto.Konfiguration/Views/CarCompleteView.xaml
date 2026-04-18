@@ -249,10 +249,10 @@
 
                     <TextBlock Text="{Binding Config.TotalPrice, StringFormat={}{0:C}, ConverterCulture=de-DE}"
                                FontSize="30"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold" Width="150"/>
                 </StackPanel>
 
-                <StackPanel DockPanel.Dock="Right" Margin="0,0,100,0">
+                <StackPanel DockPanel.Dock="Right" Margin="0,0,160,0">
                     <Button Content="Zurück"
                             Command="{Binding BackConfigurationCommand}"
                             DockPanel.Dock="Right"

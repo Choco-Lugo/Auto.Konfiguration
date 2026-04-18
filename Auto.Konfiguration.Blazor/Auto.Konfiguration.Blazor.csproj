@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.20" />
+    <PackageReference Include="MudBlazor" Version="9.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auto.Kofiguration.Domain\Auto.Konfiguration.Domain.csproj" />
+    <ProjectReference Include="..\Auto.Konfiguration.BApplication\Auto.Konfiguration.BApplication.csproj" />
+    <ProjectReference Include="..\Auto.Konfiguration.Infrastructure\Auto.Konfiguration.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

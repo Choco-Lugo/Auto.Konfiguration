@@ -1,0 +1,51 @@
+﻿@inherits LayoutComponentBase
+@using MudBlazor
+@using Auto.Konfiguration.Blazor.Theme
+
+<MudThemeProvider Theme="AppTheme.Theme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<MudLayout>
+
+    <!-- TOPBAR -->
+    <MudAppBar Elevation="0">
+        <MudText Typo="Typo.h6">Datei</MudText>
+
+        <MudSpacer />
+
+        <MudPaper Class="pa-2">
+            <MudText Color="Color.Primary">
+                👤 Volker Lugo
+            </MudText>
+        </MudPaper>
+    </MudAppBar>
+
+    <!-- SIDEBAR -->
+    <MudDrawer Open="true" Elevation="1" Width="220px">
+
+        <MudText Typo="Typo.h5" Class="pa-4">
+            Auto-Konfigurator
+        </MudText>
+
+        <MudNavMenu>
+
+            <MudNavLink Href="/">Dashboard</MudNavLink>
+            <MudNavLink Href="/konfiguration">Konfiguration</MudNavLink>
+            <MudNavLink Href="/abschluss">Abschluss</MudNavLink>
+
+        </MudNavMenu>
+
+        <div class="pa-4 mt-auto">
+            <MudText Typo="Typo.caption">Version 2026.3</MudText>
+        </div>
+
+    </MudDrawer>
+
+    <!-- CONTENT -->
+    <MudMainContent Class="pa-6">
+        @Body
+    </MudMainContent>
+
+</MudLayout>

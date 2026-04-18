@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		dotnet.yml = dotnet.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Konfiguration.Blazor", "Auto.Konfiguration.Blazor\Auto.Konfiguration.Blazor.csproj", "{CCE7F394-94CE-4660-B780-66C2D3AEB96A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{AEE6E7EB-3B34-4A1B-A89B-B12D138948F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEE6E7EB-3B34-4A1B-A89B-B12D138948F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEE6E7EB-3B34-4A1B-A89B-B12D138948F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE7F394-94CE-4660-B780-66C2D3AEB96A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE7F394-94CE-4660-B780-66C2D3AEB96A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE7F394-94CE-4660-B780-66C2D3AEB96A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE7F394-94CE-4660-B780-66C2D3AEB96A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
